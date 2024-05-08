@@ -2,9 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>case-2</title>
+
+    <style>
+        h1 {
+            width: fit-content;
+            height: fit-content;
+            font-size: 50px;
+            font-weight: bold;
+            font-family: sans-serif;
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #div-group{
+            width: 70%;
+            height: 140px;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-bottom: 2px solid white;
+            border-top: 2px solid white;
+        }
+        div {
+            position: relative;
+            width: 150px;
+            height: 70px;
+            display: inline-block;
+            margin: 50px;
+
+        }
+        div:first-child {
+            background-color: red;
+            position: absolute;
+            bottom: 140px;
+            left: 0;
+        }
+        div:nth-child(2) {
+            background-color: green;
+        }
+        div:nth-child(3) {
+            background-color: blue;
+        }
+        div:nth-child(4) {
+            background-color: yellow;
+        }
+        div:nth-child(5) {
+            background-color: lightsalmon;
+        }
+        div:nth-child(6) {
+            background-color: deeppink;
+            position: absolute;
+            right: 0;
+            top: 140px;
+        }
+
+        #buttons {
+            width: fit-content;
+            height: fit-content;
+            position: absolute;
+            top: 490px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .btn {
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+            background-color: white;
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            margin: 10px;
+        }
+
+    </style>
+
 </head>
 <body>
+
+<h1>JAVA SCRIPT QUEUE</h1>
+
+<section id="div-group">
+    <div id="div-01"></div>
+    <div id="div-02"></div>
+    <div id="div-03"></div>
+    <div id="div-04"></div>
+    <div id="div-05"></div>
+    <div id="div-06"></div>
+</section>
+
+<section id="buttons">
+    <button id="start" class="btn">Start</button>
+    <button id="stop" class="btn">Stop</button>
+</section>
+
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+<script>
+    var boxes =["red","green","blue","yellow","lightpink","deeppink"];
+    var interval;
+
+    function replaceColor(){
+        let lastColor = boxes.pop();
+        boxes.unshift(lastColor);
+
+        $('#div-01').css('background-color',boxes[0])
+        $('#div-02').css('background-color',boxes[1])
+        $('#div-03').css('background-color',boxes[2])
+        $('#div-04').css('background-color',boxes[3])
+        $('#div-05').css('background-color',boxes[4])
+        $('#div-06').css('background-color',boxes[5])
+    }
+
+
+    $('#start').on('click',() =>{
+        interval=setInterval(replaceColor, 1000);
+    });
+
+    $('#stop').on('click',() =>{
+        clearInterval(interval);
+    });
+
+</script>
 
 </body>
 </html>
