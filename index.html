@@ -3,8 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            display: inline-flex;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        h1 {
+            width: fit-content;
+            height: fit-content;
+            position: absolute;
+            margin: auto;
+            right: 0;
+            color: rgb(39, 188, 161);
+        }
+
+        section {
+            width: fit-content;
+            height: fit-content;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #house{
+            margin-left: 100px;
+        }
+        #btn_group{
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #start,#stop{
+            width: 100px;
+            height: 40px;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
+<section>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h1">A</h1>
+    </div>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h2">B</h1>
+    </div>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h3">C</h1>
+    </div>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h4">D</h1>
+    </div>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h5">E</h1>
+    </div>
+    <div>
+        <img src="assets/img/icons8-walking.gif">
+        <h1 id="h6">F</h1>
+    </div>
 
+    <div>
+        <img id="house" width="140" height="140" src="https://img.icons8.com/fluency/48/cottage.png" alt="cottage"/>
+    </div>
+    <br>
+    <br>
+    <div id="btn_group">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    </div>
+</section>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+<script>
+    var letters = ["A", "B", "C", "D", "E", "F"];
+    var myInterver = null;
+
+    function replace() {
+        let lastValue = letters.pop();
+        letters.unshift(lastValue);
+
+        $("#h1").text(letters[0]);
+        $("#h2").text(letters[1]);
+        $("#h3").text(letters[2]);
+        $("#h4").text(letters[3]);
+        $("#h5").text(letters[4]);
+        $("#h6").text(letters[5]);
+
+    }
+
+
+    $("#start").on("click", () => {
+        myInterver = setInterval(replace, 500);
+    });
+
+    $("#stop").on("click", () => {
+        clearInterval(myInterver)
+    });
+
+
+</script>
 </body>
 </html>
